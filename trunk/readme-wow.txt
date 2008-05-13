@@ -25,7 +25,7 @@ Version History
 v1.10
 - Reorganized readme files
 - Renamed msvc projects and the names of the exe output
-- msvc project includes the Lua icon for the executables
+- msvc project includes the Lua icon and version resources for the executables
 
 v1.9
 - Added PI
