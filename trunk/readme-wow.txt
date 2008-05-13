@@ -1,7 +1,7 @@
 World of Warcraft version by Matthew Orlando
 
 For questions or comments, please visit
-http://sf.net/projects/lua511wow
+http://luaforge.net/projects/lua-wow/
 
 This version of Lua is configured to match (more or less) the lua environment
 of World of Warcraft.
@@ -21,6 +21,11 @@ certain third-party packages. Please compile it from source (available at the
 above URL).
 
 Version History
+
+v1.10
+- Reorganized readme files
+- Renamed msvc projects and the names of the exe output
+- msvc project includes the Lua icon for the executables
 
 v1.9
 - Added PI
