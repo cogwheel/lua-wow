@@ -22,6 +22,9 @@ above URL).
 
 Version History
 
+v1.10.1
+- Added msvcr80.dll to the windows project
+
 v1.10
 - Reorganized readme files
 - Renamed msvc projects and the names of the exe output
