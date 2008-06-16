@@ -22,6 +22,9 @@ above URL).
 
 Version History
 
+v1.11
+- Added strrelpace (string.replace, wow.strreplace)
+
 v1.10.1
 - Added msvcr80.dll to the windows project
 
@@ -82,7 +85,7 @@ come with standard Lua distribution.
 
 
 
-WoW-specific functions
+*** WoW-specific functions ***
 
 All WoW-specific functions are implemented in the 'wow' package for simplicity's
 sake:
@@ -91,6 +94,7 @@ wow.strtrim
 wow.strsplit
 wow.strjoin
 wow.strconcat
+wow.strreplace
 wow.getglobal
 wow.setglobal
 wow.debugstack (currently ignores top and bottom counts)
@@ -166,9 +170,11 @@ strtrim = wow.strtrim
 strsplit = wow.strsplit
 strjoin = wow.strjoin
 strconcat = wow.strconcat
+strreplace = wow.strreplace
 getglobal = wow.getglobal
 setglobal = wow.setglobal
 debugstack = wow.debugstack
 string.trim = wow.strtrim
 string.split = wow.strsplit
 string.join = wow.strjoin
+string.replace = wow.strreplace

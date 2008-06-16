@@ -6,6 +6,7 @@
 #define LUA_LIB
 
 #include <string.h>
+#include <stdlib.h>
 
 #include "lua.h"
 #include "lauxlib.h"
@@ -113,6 +114,58 @@ static int wow_strconcat(lua_State *L)
 	return 1;
 }
 
+static int wow_strreplace(lua_State *L)
+{
+	const char *subject = luaL_checkstring(L, 1);
+	const char *search = luaL_checkstring(L, 2);
+	const char *replace = luaL_checkstring(L, 3);
+
+	char *replaced = (char*)calloc(1, 1), *temp = NULL;
+	const char *p = subject, *p3 = subject, *p2;
+	int  found = 0;
+	int count = 0;
+
+	while ( (p = strstr(p, search)) != NULL) {
+		found = 1;
+		count++;
+		temp = realloc(replaced, strlen(replaced) + (p - p3) + strlen(replace) + 1);
+		if (temp == NULL) {
+			free(replaced);
+			luaL_error(L, "Unable to allocate memory");
+			return 0;
+		}
+		replaced = temp;
+		strncat(replaced, p - (p - p3), p - p3);
+		strcat(replaced, replace);
+		p3 = p + strlen(search);
+		p += strlen(search);
+		p2 = p;
+	}
+
+	if (found == 1) {
+		if (strlen(p2) > 0) {
+			temp = realloc(replaced, strlen(replaced) + strlen(p2) + 1);
+			if (temp == NULL) {
+				free(replaced);
+				luaL_error(L, "Unable to allocate memory");
+				return 0;
+			}
+			replaced = temp;
+			strcat(replaced, p2);
+		}
+	} else {
+		temp = realloc(replaced, strlen(subject) + 1);
+		if (temp != NULL) {
+			replaced = temp;
+			strcpy(replaced, subject);
+		}
+	}
+
+	lua_pushstring(L, replaced);
+	lua_pushinteger(L, count);
+	return 2;
+}
+
 static int wow_getglobal(lua_State *L)
 {
 	lua_getglobal(L, luaL_checkstring(L, 1));
@@ -161,6 +214,7 @@ static const struct luaL_reg wowlib[] = {
 	{"strsplit",	wow_strsplit},
 	{"strjoin",		wow_strjoin},
 	{"strconcat",	wow_strconcat},
+	{"strreplace",  wow_strreplace},
 	{"getglobal",	wow_getglobal},
 	{"setglobal",	wow_setglobal},
 	{"debugstack",	wow_debugstack},
@@ -228,12 +282,14 @@ static const char *aliases =
 	"strsplit = wow.strsplit\n"
 	"strjoin = wow.strjoin\n"
 	"strconcat = wow.strconcat\n"
+	"strreplace = wow.strreplace\n"
 	"getglobal = wow.getglobal\n"
 	"setglobal = wow.setglobal\n"
 	"debugstack = wow.debugstack\n"
 	"string.trim = wow.strtrim\n"
 	"string.split = wow.strsplit\n"
-	"string.join = wow.strjoin\n";
+	"string.join = wow.strjoin\n"
+	"string.replace = wow.strreplace\n";
 
 
 LUALIB_API int luaopen_wow(lua_State *L)
