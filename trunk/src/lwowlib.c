@@ -209,6 +209,75 @@ static int wow_debugstack(lua_State *L)
 	return 1;
 }
 
+static int wow_scrub(lua_State *L)
+{
+	int entries = lua_gettop(L);
+	int cur;
+
+	for (cur = 1; cur <= entries; cur++) {
+		switch (lua_type(L, cur)) {
+			case LUA_TTABLE:
+			case LUA_TFUNCTION:
+			case LUA_TUSERDATA:
+			case LUA_TTHREAD:
+			case LUA_TLIGHTUSERDATA:
+				lua_pushnil(L);
+				lua_replace(L, cur);
+				break;
+		}
+	}
+
+	return entries;
+}
+
+static int wow_tostringall(lua_State *L)
+{
+	int entries = lua_gettop(L);
+	int cur;
+
+	for (cur = 1; cur <= entries; cur++) {
+		if (luaL_callmeta(L, cur, "__tostring"))
+			lua_replace(L, cur);
+		switch (lua_type(L, cur)) {
+			case LUA_TNUMBER:
+				lua_pushstring(L, lua_tostring(L, cur));
+				lua_replace(L, cur);
+				break;
+			case LUA_TSTRING:
+				break;
+			case LUA_TBOOLEAN:
+				lua_pushstring(L, (lua_toboolean(L, cur) ? "true" : "false"));
+				lua_replace(L, cur);
+				break;
+			case LUA_TNIL:
+				lua_pushliteral(L, "nil");
+				lua_replace(L, cur);
+				break;
+			default:
+				lua_pushfstring(L, "%s: %p", luaL_typename(L, cur), lua_topointer(L, cur));
+				lua_replace(L, cur);
+				break;
+		}
+	}
+
+	return entries;
+}
+
+static int wow_wipe(lua_State *L)
+{
+	luaL_checktype(L, 1, LUA_TTABLE); 
+
+	lua_pushnil(L);
+	while (lua_next(L, 1) != 0) {
+		lua_pop(L, 1);
+		lua_pushvalue(L, -1);
+		lua_pushnil(L);
+		lua_settable(L, 1);
+	}
+
+	return 1;
+}
+
 static const struct luaL_reg wowlib[] = {
 	{"strtrim",		wow_strtrim},
 	{"strsplit",	wow_strsplit},
@@ -218,6 +287,9 @@ static const struct luaL_reg wowlib[] = {
 	{"getglobal",	wow_getglobal},
 	{"setglobal",	wow_setglobal},
 	{"debugstack",	wow_debugstack},
+	{"scrub",		wow_scrub},
+	{"tostringall", wow_tostringall},
+	{"wipe",		wow_wipe},
 	{NULL,			NULL}
 };
 
@@ -279,17 +351,21 @@ static const char *aliases =
 
 	"---------------- wow ----------------\n"
 	"strtrim = wow.strtrim\n"
+	"string.trim = wow.strtrim\n"
 	"strsplit = wow.strsplit\n"
+	"string.split = wow.strsplit\n"
+	"string.join = wow.strjoin\n"
 	"strjoin = wow.strjoin\n"
 	"strconcat = wow.strconcat\n"
 	"strreplace = wow.strreplace\n"
+	"string.replace = wow.strreplace\n"
 	"getglobal = wow.getglobal\n"
 	"setglobal = wow.setglobal\n"
 	"debugstack = wow.debugstack\n"
-	"string.trim = wow.strtrim\n"
-	"string.split = wow.strsplit\n"
-	"string.join = wow.strjoin\n"
-	"string.replace = wow.strreplace\n";
+	"scrub = wow.scrub\n"
+	"tostringall = wow.tostringall\n"
+	"wipe = wow.wipe\n"
+	"table.wipe = wow.wipe\n";
 
 
 LUALIB_API int luaopen_wow(lua_State *L)

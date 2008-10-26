@@ -8,7 +8,7 @@ of World of Warcraft.
 
 * All 5.0-5.1 compatability options have been disabled except openlib
 * The bitlib library is included
-* WoW-specific, non-API functions are implemented (see below)
+* Some WoW-specific, Lua library-like functions are implemented (see below)
 * Global aliases to Lua functions are provided (see below)
 * string.format can use argument selection from Lua 4.0. E.g:
     string.format("%2$d, %1$d, %d", 1, 2) == "2, 1, 2"
@@ -21,6 +21,12 @@ certain third-party packages. Please compile it from source (available at the
 above URL).
 
 Version History
+
+v1.12
+- Added scrub, tostringall, wipe
+- Visual Studio project upgraded to Visual Studio 2008
+- Visual C++ Runtime is now statically linked which should eliminate some
+problems running lua-wow under certain Windows installations
 
 v1.11
 - Added strrelpace (string.replace, wow.strreplace)
@@ -98,6 +104,8 @@ wow.strreplace
 wow.getglobal
 wow.setglobal
 wow.debugstack (currently ignores top and bottom counts)
+wow.scrub
+wow.tostringall
 
 The global versions (and the few that are added to the string table) are aliased
 below.
@@ -167,14 +175,18 @@ tremove = table.remove
 wow
 
 strtrim = wow.strtrim
+string.trim = wow.strtrim
 strsplit = wow.strsplit
+string.split = wow.strsplit
 strjoin = wow.strjoin
+string.join = wow.strjoin
 strconcat = wow.strconcat
 strreplace = wow.strreplace
+string.replace = wow.strreplace
 getglobal = wow.getglobal
 setglobal = wow.setglobal
 debugstack = wow.debugstack
-string.trim = wow.strtrim
-string.split = wow.strsplit
-string.join = wow.strjoin
-string.replace = wow.strreplace
+scrub = wow.scrub
+tostringall = wow.tostringall
+wipe = wow.wipe
+table.wipe = wow.wipe

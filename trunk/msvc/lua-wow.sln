@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lua", "Lua\Lua.vcproj", "{6A9AEE1C-ADA6-43FE-B066-46DB3FC133E5}"
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua-wow", "Lua\Lua.vcproj", "{6A9AEE1C-ADA6-43FE-B066-46DB3FC133E5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Luac", "Luac\Luac.vcproj", "{1BFE5A7C-DD64-409B-8002-BEFF18CCA179}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "luac-wow", "Luac\Luac.vcproj", "{1BFE5A7C-DD64-409B-8002-BEFF18CCA179}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
