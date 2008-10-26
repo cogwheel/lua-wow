@@ -62,8 +62,8 @@ IDI_ICON1               ICON                    "..\\lua.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,11,0,0
- PRODUCTVERSION 1,11,0,0
+ FILEVERSION 1,12,0,0
+ PRODUCTVERSION 1,12,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -79,12 +79,12 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "FileDescription", "Lua compiler customized to match World of Warcraft's addon environment"
-            VALUE "FileVersion", "1, 11, 0, 0"
+            VALUE "FileVersion", "1, 12, 0, 0"
             VALUE "InternalName", "luac-wow"
             VALUE "LegalCopyright", "Copyright (C) 2008"
             VALUE "OriginalFilename", "luac-wow.exe"
             VALUE "ProductName", "Luac-WoW"
-            VALUE "ProductVersion", "1, 11, 0, 0"
+            VALUE "ProductVersion", "1, 12, 0, 0"
         END
     END
     BLOCK "VarFileInfo"
