@@ -25,15 +25,15 @@ above URL).
 All WoW-specific functions are implemented in the 'wow' package for simplicity's
 sake:
 
-wow.strtrim
-wow.strsplit
-wow.strjoin
-wow.strconcat
-wow.strreplace
-wow.getglobal
-wow.setglobal
-wow.debugstack (currently ignores top and bottom counts)
-wow.scrub
+wow.strtrim  
+wow.strsplit  
+wow.strjoin  
+wow.strconcat  
+wow.strreplace  
+wow.getglobal  
+wow.setglobal  
+wow.debugstack (currently ignores top and bottom counts)  
+wow.scrub  
 wow.tostringall
 
 The global versions (and the few that are added to the string table) are aliased
@@ -45,79 +45,79 @@ below.
 
 os
 
-date = os.date
-time = os.time
+date = os.date  
+time = os.time  
 difftime = os.difftime
 
 math
 
-abs = math.abs
-acos = function (x) return math.deg(math.acos(x)) end
-asin = function (x) return math.deg(math.asin(x)) end
-atan = function (x) return math.deg(math.atan(x)) end
-atan2 = function (x,y) return math.deg(math.atan2(x,y)) end
-ceil = math.ceil
-cos = function (x) return math.cos(math.rad(x)) end
-deg = math.deg
-exp = math.exp
-floor = math.floor
-frexp = math.frexp
-ldexp = math.ldexp
-log = math.log
-log10 = math.log10
-max = math.max
-min = math.min
-mod = math.fmod
-PI = math.pi
-rad = math.rad
-random = math.random
-randomseed = math.randomseed
-sin = function (x) return math.sin(math.rad(x)) end
-sqrt = math.sqrt
+abs = math.abs  
+acos = function (x) return math.deg(math.acos(x)) end  
+asin = function (x) return math.deg(math.asin(x)) end  
+atan = function (x) return math.deg(math.atan(x)) end  
+atan2 = function (x,y) return math.deg(math.atan2(x,y)) end  
+ceil = math.ceil  
+cos = function (x) return math.cos(math.rad(x)) end  
+deg = math.deg  
+exp = math.exp  
+floor = math.floor  
+frexp = math.frexp  
+ldexp = math.ldexp  
+log = math.log  
+log10 = math.log10  
+max = math.max  
+min = math.min  
+mod = math.fmod  
+PI = math.pi  
+rad = math.rad  
+random = math.random  
+randomseed = math.randomseed  
+sin = function (x) return math.sin(math.rad(x)) end  
+sqrt = math.sqrt  
 tan = function (x) return math.tan(math.rad(x)) end
 
 string
 
-format = string.format
-gmatch = string.gmatch
-gsub = string.gsub
-strbyte = string.byte
-strchar = string.char
-strfind = string.find
-strlen = string.len
-strlower = string.lower
-strmatch = string.match
-strrep = string.rep
-strrev = string.reverse
-strsub = string.sub
+format = string.format  
+gmatch = string.gmatch  
+gsub = string.gsub  
+strbyte = string.byte  
+strchar = string.char  
+strfind = string.find  
+strlen = string.len  
+strlower = string.lower  
+strmatch = string.match  
+strrep = string.rep  
+strrev = string.reverse  
+strsub = string.sub  
 strupper = string.upper
 
 table
 
-foreach = table.foreach
-foreachi = table.foreachi
-getn = table.getn
-sort = table.sort
-tinsert = table.insert
+foreach = table.foreach  
+foreachi = table.foreachi  
+getn = table.getn  
+sort = table.sort  
+tinsert = table.insert  
 tremove = table.remove
 
 wow
 
-strtrim = wow.strtrim
-string.trim = wow.strtrim
-strsplit = wow.strsplit
-string.split = wow.strsplit
-strjoin = wow.strjoin
-string.join = wow.strjoin
-strconcat = wow.strconcat
-strreplace = wow.strreplace
-string.replace = wow.strreplace
-getglobal = wow.getglobal
-setglobal = wow.setglobal
-debugstack = wow.debugstack
-scrub = wow.scrub
-tostringall = wow.tostringall
-wipe = wow.wipe
+strtrim = wow.strtrim  
+string.trim = wow.strtrim  
+strsplit = wow.strsplit  
+string.split = wow.strsplit  
+strjoin = wow.strjoin  
+string.join = wow.strjoin  
+strconcat = wow.strconcat  
+strreplace = wow.strreplace  
+string.replace = wow.strreplace  
+getglobal = wow.getglobal  
+setglobal = wow.setglobal  
+debugstack = wow.debugstack  
+scrub = wow.scrub  
+tostringall = wow.tostringall  
+wipe = wow.wipe  
 table.wipe = wow.wipe
 
 
