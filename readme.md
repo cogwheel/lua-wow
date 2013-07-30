@@ -1,7 +1,6 @@
 World of Warcraft version by Matthew Orlando
 
-For questions or comments, please visit
-http://luaforge.net/projects/lua-wow/
+See readme-lua.txt for the original README
 
 This version of Lua is configured to match (more or less) the lua environment
 of World of Warcraft.
@@ -20,78 +19,8 @@ performance and file size. They may not function as expected when used with
 certain third-party packages. Please compile it from source (available at the
 above URL).
 
-Version History
 
-v1.12
-- Added scrub, tostringall, wipe
-- Visual Studio project upgraded to Visual Studio 2008
-- Visual C++ Runtime is now statically linked which should eliminate some
-problems running lua-wow under certain Windows installations
-
-v1.11
-- Added strrelpace (string.replace, wow.strreplace)
-
-v1.10.1
-- Added msvcr80.dll to the windows project
-
-v1.10
-- Reorganized readme files
-- Renamed msvc projects and the names of the exe output
-- msvc project includes the Lua icon and version resources for the executables
-
-v1.9
-- Added PI
-- Global versions of trigonometric functions now correctly use degrees
-- strsplit will print an appropriate error message if it overflows the stack
-- It should no longer be practically possible to overflow the stack with strjoin
-
-v1.8
-- Re-enabled 5.0 openlib compatibility since WoW does not use libs anyway
-
-v1.7
-- Changed GCPAUSE to 110 per WoW 2.1
-- Eliminated a few miscellaneous compiler warnings
-
-v1.6.1
-- Added #define LUA_LIB to lwowlib & lbitlib to fix compilation problems
-
-v1.6
-- Updated bitlib to the latest version
-- Bitlib now correctly uses 32-bit integers as does WoW
-- The global aliases to bitlib functions and table.setn have been removed since
-they do not exist in WoW
-
-v1.5.1
-- Ignores UTF-8 Byte Order Mark
-
-v1.5
-- Added debugstack() (not fully implemented--see below)
-- Made some slight optimizations/code simplifications
-
-v1.4
-- Added argument selection to string.format
-
-v1.3.1
-- Fixed Makefile problem
-
-v1.3
-- Added blizzard-specific functions & global aliases (see below)
-
-v1.2
-- This package can now be used as a drop-in replacement for the standard lua
-source distribution: The MSVC project (including precompiled windows binaries)
-is now found in the msvc subdirectory; the rest of the directory structure is
-untouched.
-
-v1.1
-- Added BitLib. Optimized file size of Luac.exe. Includes test Lua programs that
-come with standard Lua distribution.
-
-1.0 - Initial Release
-
-
-
-*** WoW-specific functions ***
+**WoW-specific functions**
 
 All WoW-specific functions are implemented in the 'wow' package for simplicity's
 sake:
@@ -112,7 +41,7 @@ below.
 
 
 
-*** Aliases ***
+**Aliases**
 
 os
 
@@ -190,3 +119,73 @@ scrub = wow.scrub
 tostringall = wow.tostringall
 wipe = wow.wipe
 table.wipe = wow.wipe
+
+
+**Version History**
+
+v1.12
+- Added scrub, tostringall, wipe
+- Visual Studio project upgraded to Visual Studio 2008
+- Visual C++ Runtime is now statically linked which should eliminate some
+problems running lua-wow under certain Windows installations
+
+v1.11
+- Added strrelpace (string.replace, wow.strreplace)
+
+v1.10.1
+- Added msvcr80.dll to the windows project
+
+v1.10
+- Reorganized readme files
+- Renamed msvc projects and the names of the exe output
+- msvc project includes the Lua icon and version resources for the executables
+
+v1.9
+- Added PI
+- Global versions of trigonometric functions now correctly use degrees
+- strsplit will print an appropriate error message if it overflows the stack
+- It should no longer be practically possible to overflow the stack with strjoin
+
+v1.8
+- Re-enabled 5.0 openlib compatibility since WoW does not use libs anyway
+
+v1.7
+- Changed GCPAUSE to 110 per WoW 2.1
+- Eliminated a few miscellaneous compiler warnings
+
+v1.6.1
+- Added #define LUA_LIB to lwowlib & lbitlib to fix compilation problems
+
+v1.6
+- Updated bitlib to the latest version
+- Bitlib now correctly uses 32-bit integers as does WoW
+- The global aliases to bitlib functions and table.setn have been removed since
+they do not exist in WoW
+
+v1.5.1
+- Ignores UTF-8 Byte Order Mark
+
+v1.5
+- Added debugstack() (not fully implemented--see below)
+- Made some slight optimizations/code simplifications
+
+v1.4
+- Added argument selection to string.format
+
+v1.3.1
+- Fixed Makefile problem
+
+v1.3
+- Added blizzard-specific functions & global aliases (see below)
+
+v1.2
+- This package can now be used as a drop-in replacement for the standard lua
+source distribution: The MSVC project (including precompiled windows binaries)
+is now found in the msvc subdirectory; the rest of the directory structure is
+untouched.
+
+v1.1
+- Added BitLib. Optimized file size of Luac.exe. Includes test Lua programs that
+come with standard Lua distribution.
+
+1.0 - Initial Release
